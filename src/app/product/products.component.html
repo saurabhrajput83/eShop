@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>{{title}}</h2>
+  <hr/>
+  <div class="float-right">
+    <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" id="productsActions">Select Action:</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item">Add New Product</a>
+        <a class="dropdown-item">Export</a>
+      </div>
+    </div>
+  </div>
+  <!--using structural directive which starts with * and update dom-->
+  <!--using event handling directives which uses ()-->
+  <div *ngIf="products.length>0">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><button class="btn btn-primary" role="button" (click)="showImgClk()">{{showImage === true ? 'Hide Image' : 'Show Image'}}</button></th>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Model No.</th>
+          <th>Price</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of products">
+          <td><img [src]="p.imageUrl" *ngIf="showImage" width="15px" height="15px"></td>
+          <td>{{p.id}}</td>
+          <td><a routerLink="../products/{{p.id}}">{{p.name}}</a></td>
+          <td><span class="badge badge-secondary">{{p.modelNo}}</span></td>
+          <td>{{p.price}}</td>
+          <td><a>Edit</a> | <a>Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
