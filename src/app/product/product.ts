@@ -5,4 +5,5 @@ export interface IProduct {
   modelNo: string;
   price: number;
   imageUrl: string;
+  rating: number;
 }
